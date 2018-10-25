@@ -1,0 +1,45 @@
+---
+title: "Ejemplo"
+author: "Luis Bermudez"
+date: "25 de octubre de 2018"
+output: html_document
+---
+
+```{r, echo=FALSE}
+knitr::opts_chunk$set(error = TRUE)
+```
+
+```{r, include=FALSE}
+# Libraries
+library(tidyverse)
+library(plotly)
+library(kableExtra)
+```
+
+## Ejemplo 1
+
+Ejemplo de r markdown haciendo una grafica sencilla con ggplot y luego usando ggplotly para que se vea interactiva.
+
+```{r cars}
+kable(summary(cars))%>%
+  kable_styling(bootstrap_options = c("striped", "hover"))
+```
+
+
+## Graficas con Plotly
+```{r}
+ggplot(data = reviews) +
+  aes(y = len, x = seq_along(len)) +
+  geom_line(color = "#0c4c8a") +
+  theme_minimal()
+```
+
+
+```{r ggplot, echo=TRUE}
+# Scatterplot
+p<-ggplot(iris, aes(x=Sepal.Length, y=Sepal.Width, color=Species, shape=Species)) + 
+    geom_point(size=6, alpha=0.6)
+ggplotly(p)
+
+```
+
